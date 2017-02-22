@@ -14,18 +14,16 @@ import java.beans.PropertyChangeSupport;
  * Created by IDA on 22/02/2017.
  */
 
+@UpnpService(
+        serviceId = @UpnpServiceId("RemoteController"),
+        serviceType = @UpnpServiceType(value = "RemoteController", version = 1)
+)
 public class RemoteController {
 
-    @UpnpService(
-            serviceId = @UpnpServiceId("RemoteController"),
-            serviceType = @UpnpServiceType(value = "RemoteController", version = 1)
-    )
-
-    public class Defilement {
 
         private final PropertyChangeSupport propertyChangeSupport;
 
-        public Defilement() {
+        public RemoteController() {
             this.propertyChangeSupport = new PropertyChangeSupport(this);
         }
 
@@ -113,5 +111,5 @@ public class RemoteController {
         public void printVersion() {
             System.out.println("Version : 1.0");
         }
-    }
 }
+
