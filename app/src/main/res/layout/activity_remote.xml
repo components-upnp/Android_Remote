@@ -33,7 +33,7 @@
         android:layout_alignEnd="@+id/button5" />
 
     <Button
-        android:text="<"
+        android:text="@string/Gauche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button"
@@ -56,7 +56,7 @@
         android:layout_toStartOf="@+id/button4" />
 
     <Button
-        android:text=">"
+        android:text="@string/Droite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button4"

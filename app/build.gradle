@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+ext {
+    jettyVersion = "8.1.8.v20121106"
+    eslf4jVersion = "1.6.1"
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
@@ -19,6 +24,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "http://4thline.org/m2"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -26,4 +37,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'org.fourthline.cling:cling-core:2.0.1'
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: jettyVersion
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: jettyVersion
+    compile group: 'org.eclipse.jetty', name: 'jetty-client', version: jettyVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: eslf4jVersion
 }

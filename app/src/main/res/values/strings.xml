@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Remote</string>
+    <string name="Droite"><![CDATA[>]]></string>
+    <string name="Gauche"><![CDATA[<]]></string>
 </resources>
