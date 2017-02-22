@@ -27,53 +27,54 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="96dp"
-        android:id="@+id/button"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_alignRight="@+id/button5"
-        android:layout_alignEnd="@+id/button5" />
+        android:id="@+id/haut"
+        android:layout_toRightOf="@+id/gauche"
+        android:layout_alignRight="@+id/centre"
+        android:layout_alignEnd="@+id/centre"
+        android:onClick="clicHaut" />
 
     <Button
         android:text="@string/Gauche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="19dp"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="58dp"
-        android:id="@+id/button2" />
-
-    <Button
-        android:text="v"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/seekBar"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_marginBottom="35dp"
-        android:id="@+id/button3"
-        android:layout_toLeftOf="@+id/button4"
-        android:layout_toStartOf="@+id/button4" />
+        android:layout_marginTop="61dp"
+        android:id="@+id/gauche"
+        android:layout_below="@+id/haut"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="clicGauche" />
 
     <Button
         android:text="@string/Droite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toRightOf="@+id/button"
-        android:layout_toEndOf="@+id/button"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp" />
+        android:id="@+id/droite"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_alignTop="@+id/centre"
+        android:layout_toRightOf="@+id/centre"
+        android:layout_toEndOf="@+id/centre"
+        android:onClick="clicDroit" />
+
+    <Button
+        android:text="v "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/centre"
+        android:layout_alignLeft="@+id/centre"
+        android:layout_alignStart="@+id/centre"
+        android:layout_marginTop="52dp"
+        android:id="@+id/bas"
+        android:onClick="clicBas" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_toEndOf="@+id/button2"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:id="@+id/button5" />
+        android:id="@+id/centre"
+        style="@android:style/Widget.Button.Toggle"
+        android:layout_alignTop="@+id/gauche"
+        android:layout_centerHorizontal="true"
+        android:onClick="clicCentre" />
 </RelativeLayout>

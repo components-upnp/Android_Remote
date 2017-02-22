@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import org.fourthline.cling.android.AndroidUpnpService;
@@ -38,6 +39,7 @@ public class Remote extends AppCompatActivity implements PropertyChangeListener 
     private UDN udn = new UDN(UUID.randomUUID()); // TODO: Not stable! Sauvegarder l'UUID dans un fichier après la première génération
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
+
 
         public void onServiceConnected(ComponentName className, IBinder service) {
             upnpService = (AndroidUpnpService) service;
@@ -114,6 +116,26 @@ public class Remote extends AppCompatActivity implements PropertyChangeListener 
                 serviceConnection,
                 Context.BIND_AUTO_CREATE
         );
+    }
+
+    public void clicGauche(View view) {
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.GAUCHE);
+    }
+
+    public void clicDroit(View view) {
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.DROITE);
+    }
+
+    public void clicHaut(View view) {
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.HAUT);
+    }
+
+    public void clicBas(View view) {
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.BAS);
+    }
+
+    public void clicCentre(View view) {
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.CENTRE);
     }
 
     @Override

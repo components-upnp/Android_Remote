@@ -36,15 +36,15 @@ public class RemoteController {
          * Variable D'Etat, non �venemenc�e
          * Permet d'envoyer le message de l'�tat dans lequel la lampe doit �tre
          */
-        @UpnpStateVariable(defaultValue = "GAUCHE", sendEvents = false)
-        private State target = State.DROITE;
+        @UpnpStateVariable(defaultValue = "AUCUN", sendEvents = false)
+        private State target = State.AUCUN;
 
         /**
          * Variable d'etat �venemmenc�e
          * Permet de v�rifier si la lampe est bien dans le bon �tat.
          */
         @UpnpStateVariable(defaultValue = "GAUCHE")
-        private State status = State.GAUCHE;
+        private State status = State.AUCUN;
 
         /**
          * Variable qui me permet d'emmettre des �venements UPnP et JavaBean
@@ -78,6 +78,9 @@ public class RemoteController {
             // Ceci n'a pas d'effet pour le monitoring UPnP, mais fonctionne avec Javabean.
             // Ici on met le nom de la variable : status
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
+
+            status = State.AUCUN;
+            target = State.AUCUN;
         }
 
         /**
