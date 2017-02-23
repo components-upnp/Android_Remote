@@ -37,14 +37,14 @@ public class RemoteController {
          * Permet d'envoyer le message de l'�tat dans lequel la lampe doit �tre
          */
         @UpnpStateVariable(defaultValue = "AUCUN", sendEvents = false)
-        private State target = State.AUCUN;
+        private String target = State.AUCUN.toString();
 
         /**
          * Variable d'etat �venemmenc�e
          * Permet de v�rifier si la lampe est bien dans le bon �tat.
          */
         @UpnpStateVariable(defaultValue = "AUCUN")
-        private State status = State.AUCUN;
+        private String status = State.AUCUN.toString();
 
         /**
          * Variable qui me permet d'emmettre des �venements UPnP et JavaBean
@@ -57,14 +57,15 @@ public class RemoteController {
          * @param newTargetValue
          */
         @UpnpAction
-        public void setTarget(@UpnpInputArgument(name = "NewTargetValue") State newTargetValue) {
+        public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue) {
 
+            System.out.println("Changement");
             // [FACULTATIF] je garde la l'ancienne valeur pour emmettre l'evenenment
-            State targetOldValue = target;
+            String targetOldValue = target;
             target = newTargetValue;
 
 
-            State statusOldValue = status;
+            String statusOldValue = status;
             status = newTargetValue;
 
             // Envoie un �venement UPnP, c'est le nom de la variable d'etat qui lance l'�venement
@@ -79,8 +80,8 @@ public class RemoteController {
             // Ici on met le nom de la variable : status
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
 
-            status = State.AUCUN;
-            target = State.AUCUN;
+            status = State.AUCUN.toString();
+            target = State.AUCUN.toString();
         }
 
         /**
@@ -90,7 +91,7 @@ public class RemoteController {
          * @return boolean
          */
         @UpnpAction(out = @UpnpOutputArgument(name = "RetTargetValue"))
-        public State getTarget() {
+        public String getTarget() {
             return target;
         }
 
@@ -101,7 +102,7 @@ public class RemoteController {
          * @return boolean
          */
         @UpnpAction(out = @UpnpOutputArgument(name = "ResultStatus"))
-        public State getStatus() {
+        public String getStatus() {
             // Pour ajouter des informations suppl�mentaires UPnP en cas d'erreur :
             // throw new ActionException(ErrorCode.ACTION_NOT_AUTHORIZED);
             return status;
