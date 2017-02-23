@@ -43,7 +43,7 @@ public class RemoteController {
          * Variable d'etat �venemmenc�e
          * Permet de v�rifier si la lampe est bien dans le bon �tat.
          */
-        @UpnpStateVariable(defaultValue = "GAUCHE")
+        @UpnpStateVariable(defaultValue = "AUCUN")
         private State status = State.AUCUN;
 
         /**
