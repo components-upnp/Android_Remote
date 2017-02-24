@@ -80,8 +80,8 @@ public class RemoteController {
             // Ici on met le nom de la variable : status
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
 
-            status = State.AUCUN.toString();
-            target = State.AUCUN.toString();
+
+
         }
 
         /**

@@ -120,22 +120,32 @@ public class Remote extends AppCompatActivity implements PropertyChangeListener 
 
     public void clicGauche(View view) {
         getRemoteControllerService().getManager().getImplementation().setTarget(State.GAUCHE.toString());
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
+
     }
 
     public void clicDroit(View view) {
         getRemoteControllerService().getManager().getImplementation().setTarget(State.DROITE.toString());
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
+
     }
 
     public void clicHaut(View view) {
         getRemoteControllerService().getManager().getImplementation().setTarget(State.HAUT.toString());
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
+
     }
 
     public void clicBas(View view) {
         getRemoteControllerService().getManager().getImplementation().setTarget(State.BAS.toString());
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
+
     }
 
     public void clicCentre(View view) {
         getRemoteControllerService().getManager().getImplementation().setTarget(State.CENTRE.toString());
+        getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
+
     }
 
     @Override
