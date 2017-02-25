@@ -61,13 +61,6 @@ public class Remote extends AppCompatActivity implements PropertyChangeListener 
                 }
             }
 
-           /* // Obtain the state of the power switch and update the UI
-            setLightbulb(switchPowerService.getManager().getImplementation().getStatus());
-
-            // Start monitoring the power switch
-            switchPowerService.getManager().getImplementation().getPropertyChangeSupport()
-                    .addPropertyChangeListener(LightActivity.this);*/
-
         }
 
         public void onServiceDisconnected(ComponentName className) {
@@ -76,6 +69,10 @@ public class Remote extends AppCompatActivity implements PropertyChangeListener 
     };
 
 
+    /*Fonction permettant la création du device UPnP, on définit son type,
+    * lui ajoute des détails et lui donne une classe qui contient le service
+    * UPnP
+    * */
     protected LocalDevice createDevice()
             throws ValidationException, LocalServiceBindingException {
 
@@ -117,6 +114,10 @@ public class Remote extends AppCompatActivity implements PropertyChangeListener 
                 Context.BIND_AUTO_CREATE
         );
     }
+
+    //Dans les fonctions qui suivent, on envoie un premier message pour avertir du changement d'état
+    //On envoie ensuite un autre message pour revenir sur l'état AUCUN
+    //Cela permet de faire deux fois la même actions (deux fois DROITE par exemple)
 
     public void clicGauche(View view) {
         getRemoteControllerService().getManager().getImplementation().setTarget(State.GAUCHE.toString());

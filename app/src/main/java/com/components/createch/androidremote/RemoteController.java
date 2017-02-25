@@ -14,6 +14,11 @@ import java.beans.PropertyChangeSupport;
  * Created by IDA on 22/02/2017.
  */
 
+/*Classe contenant le service UPnP offert par l'application
+* On y retrouve les différentes méthodes accessibles via le réseaux*/
+
+
+    //Définition du service UPnP, ID + Type
 @UpnpService(
         serviceId = @UpnpServiceId("RemoteController"),
         serviceType = @UpnpServiceType(value = "RemoteController", version = 1)
@@ -34,14 +39,14 @@ public class RemoteController {
 
         /**
          * Variable D'Etat, non �venemenc�e
-         * Permet d'envoyer le message de l'�tat dans lequel la lampe doit �tre
+         * Permet d'envoyer le message de l'�tat de la télécommande
          */
         @UpnpStateVariable(defaultValue = "AUCUN", sendEvents = false)
         private String target = State.AUCUN.toString();
 
         /**
          * Variable d'etat �venemmenc�e
-         * Permet de v�rifier si la lampe est bien dans le bon �tat.
+         * Permet de v�rifier si la télécommande est bien dans le bon �tat.
          */
         @UpnpStateVariable(defaultValue = "AUCUN")
         private String status = State.AUCUN.toString();
@@ -52,7 +57,7 @@ public class RemoteController {
 
 
         /**
-         * Permet d'envoyer un message de changement d'etat de la lampe
+         * Permet d'envoyer un message de changement d'etat de télécommande
          *
          * @param newTargetValue
          */
@@ -72,8 +77,7 @@ public class RemoteController {
             // COMMENCE PAR UNE MAJUSCULE. Ici "Status" pour la varialbe status
             getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
 
-            // Fonctionne aussi :
-            // getPropertyChangeSupport().firePropertyChange("Status", null null);
+
 
             // [FACULTATIF]
             // Ceci n'a pas d'effet pour le monitoring UPnP, mais fonctionne avec Javabean.
@@ -85,7 +89,7 @@ public class RemoteController {
         }
 
         /**
-         * Get target of the lamp
+         * Obtenie le target de la télécommande
          * Methode Upnp grace au syst�me d'annotation
          *
          * @return boolean
@@ -96,7 +100,7 @@ public class RemoteController {
         }
 
         /**
-         * Get Status of the lamp
+         * Obtenir le status de la télécommande
          * Methode Upnp grace au syst�me d'annotation
          *
          * @return boolean
