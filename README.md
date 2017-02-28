@@ -8,11 +8,19 @@ Par exemple, on pourrait faire interagir la télécommande Android avec un lecte
 de piste, le curseur pour le volume et le bouton central pour la lecture/pause.
 
 
-Spécificités techniques:
+Lancement de l'application:
 
 L'application ne peut pas communiquer via UPnP lorsque lancée dans un émulateur, elle doit être lancée sur un terminal 
 physique et appartenir au même réseau local que les autres composants.
 
+Il faut donc installer l'apk sur le terminal, vérifier d'avoir autorisé les sources non vérifiées.
+
+Après démarrage de l'application, il est possible d'ajouter le composantsur wcomp en suivant la méthode décrite sur le wiki oppocampus.
+ATTENTION: redémarrer l'application fait changer l'UID du composant, il faut donc le rajouter sur wcomp à nouveau.(ce problème sera réglé utltérieurement).
+
+ATTENTION: 
+
+Messages d'évènements:
 L'application envoie un message évenementiel sous forme de chaîne de charactère (String), de la forme suivante(selon le bouton
 qui a été cliqué):
 
@@ -21,6 +29,8 @@ qui a été cliqué):
   -BAS
   -HAUT
   -CENTRE
+  
+  
   
   Interface UPnP:
   
