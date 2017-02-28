@@ -22,18 +22,6 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="^"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="96dp"
-        android:id="@+id/haut"
-        android:layout_toRightOf="@+id/gauche"
-        android:layout_alignRight="@+id/centre"
-        android:layout_alignEnd="@+id/centre"
-        android:onClick="clicHaut" />
-
-    <Button
         android:text="@string/Gauche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,4 +65,15 @@
         android:layout_alignTop="@+id/gauche"
         android:layout_centerHorizontal="true"
         android:onClick="clicCentre" />
+
+    <Button
+        android:text="^"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="98dp"
+        android:id="@+id/haut"
+        android:onClick="clicHaut"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/gauche"
+        android:layout_toEndOf="@+id/gauche" />
 </RelativeLayout>
