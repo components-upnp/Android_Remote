@@ -53,10 +53,6 @@ public class SliderController {
         @UpnpStateVariable(defaultValue = "0")
         private String status = "0";
 
-        /**
-         * Variable qui me permet d'emmettre des �venements UPnP et JavaBean
-         */
-
 
         /**
          * Permet d'envoyer un message de changement d'etat de télécommande

@@ -20,9 +20,6 @@ public class Remote extends AppCompatActivity  {
     private Service service;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +90,5 @@ public class Remote extends AppCompatActivity  {
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
 
     }
-
-
-
 
 }

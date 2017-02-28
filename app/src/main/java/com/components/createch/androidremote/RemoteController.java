@@ -52,11 +52,6 @@ public class RemoteController {
         private String status = State.AUCUN.toString();
 
         /**
-         * Variable qui me permet d'emmettre des �venements UPnP et JavaBean
-         */
-
-
-        /**
          * Permet d'envoyer un message de changement d'etat de télécommande
          *
          * @param newTargetValue
