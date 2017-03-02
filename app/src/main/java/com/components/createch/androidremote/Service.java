@@ -19,7 +19,8 @@ import java.util.UUID;
 public class Service {
 
     private AndroidUpnpService upnpService;
-    private UDN udn;  // TODO: Not stable! Sauvegarder l'UUID dans un fichier après la première génération
+    private UDN udnButton;  // TODO: Not stable! Sauvegarder l'UUID dans un fichier après la première génération
+    private UDN udnSlider;
     private ServiceConnection serviceConnection;
 
 
@@ -38,8 +39,8 @@ public class Service {
                     // Register the device when this activity binds to the service for the first time
                     if (remoteControllerService == null) {
                         try {
-                            udn = new UDN(UUID.randomUUID());
-                            LocalDevice remoteDevice = RemoteButtonsDevice.createDevice(udn);
+                            udnButton = new UDN(UUID.randomUUID());
+                            LocalDevice remoteDevice = RemoteButtonsDevice.createDevice(udnButton);
 
                             upnpService.getRegistry().addDevice(remoteDevice);
 
@@ -49,13 +50,14 @@ public class Service {
                         }
                     }
 
+                    udnSlider = new UDN(UUID.randomUUID());
                     LocalService<SliderController> sliderControllerService = getSliderControllerService();
 
                     if (sliderControllerService == null) {
                         try {
-                            udn = new UDN(UUID.randomUUID());
 
-                            LocalDevice remoteDevice = RemoteSliderDevice.createDevice(udn);
+
+                            LocalDevice remoteDevice = RemoteSliderDevice.createDevice(udnSlider);
 
                             upnpService.getRegistry().addDevice(remoteDevice);
 
@@ -87,7 +89,7 @@ public class Service {
             return null;
 
         LocalDevice remoteDevice;
-        if ((remoteDevice = upnpService.getRegistry().getLocalDevice(udn, true)) == null)
+        if ((remoteDevice = upnpService.getRegistry().getLocalDevice(udnButton, true)) == null)
             return null;
 
         return (LocalService<RemoteController>)
@@ -99,7 +101,7 @@ public class Service {
             return null;
 
         LocalDevice remoteDevice;
-        if ((remoteDevice = upnpService.getRegistry().getLocalDevice(udn, true)) == null)
+        if ((remoteDevice = upnpService.getRegistry().getLocalDevice(udnSlider, true)) == null)
             return null;
 
         return (LocalService<SliderController>)
