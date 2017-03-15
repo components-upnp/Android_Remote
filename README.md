@@ -1,5 +1,5 @@
 # Android_Remote
-Télécommande Android avec une interface réseau UpNp
+Télécommande Android avec une interface réseau UPnP
 
 Description:
 Application Android dont l'interface est composée d'une croix directionnelle, d'un bouton central et d'un curseur.
@@ -16,9 +16,10 @@ physique et appartenir au même réseau local que les autres composants.
 Il faut donc installer l'apk sur le terminal, vérifier d'avoir autorisé les sources non vérifiées.
 
 Après démarrage de l'application, il est possible d'ajouter le composantsur wcomp en suivant la méthode décrite sur le wiki oppocampus.
-ATTENTION: redémarrer l'application fait changer l'UID du composant, il faut donc le rajouter sur wcomp à nouveau.(ce problème sera réglé utltérieurement).
 
 ATTENTION: 
+  -redémarrer l'application fait changer l'UID du composant, il faut donc le rajouter sur wcomp à nouveau.(ce problème sera réglé utltérieurement).
+  -
 
 Messages d'évènements:
 L'application envoie un message évenementiel sous forme de chaîne de charactère (String), de la forme suivante(selon le bouton
@@ -30,41 +31,6 @@ qui a été cliqué):
   -HAUT
   -CENTRE
   
-  
-  
-  Interface UPnP:
-  
-  
-  
-  @UpnpService(
-        serviceId = @UpnpServiceId("Selection"),                    // ID du service
-        serviceType = @UpnpServiceType(value = "Selection", version = 1)  //Type du service
-)
-
-
-
-  @UpnpStateVariable(defaultValue = "AUCUNE", sendEvents = false) //Variable d'état non évenementielle de la selection, pour envoyer le message
-    private Action target = Action.AUCUNE;
-
-    
-    @UpnpStateVariable(defaultValue = "AUCUNE")   //variable d'état évenementielle, permet de vérifier l'état de la séléction
-    private Action status = Action.AUCUNE;
-
-    //Cette fonction permet de changer la variable d'état et de lancer un évènement à destination de l'interface graphique
-
-@UpnpAction
-    public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue);
-    
-    
-    
-     //retourne le statut de la sélection
-
-    
-@UpnpAction(out = @UpnpOutputArgument(name = "ResultStatus"))
-    public Action getStatus() {
-        // Pour ajouter des informations supplï¿½mentaires UPnP en cas d'erreur :
-        // throw new ActionException(ErrorCode.ACTION_NOT_AUTHORIZED);
-        return status;
-    }
+  -Une valeur de 0 à 100 sous forme de String pour le Slider.
     
   
