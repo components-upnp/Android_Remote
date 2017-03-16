@@ -96,7 +96,7 @@ public class RemoteController {
 
         /**
          * Obtenir le status de la télécommande
-         * Methode Upnp grace au syst�me d'annotation
+         * Methode Upnp grace au système d'annotation
          *
          * @return boolean
          */

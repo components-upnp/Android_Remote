@@ -48,7 +48,6 @@ public class RemoteSliderDevice {
                 new DeviceIdentity(udn),
                 type,
                 details,
-
                 service
         );
     }
