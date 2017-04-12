@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/centre"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="115dp"
+        android:layout_height="72dp"
+        android:layout_alignTop="@+id/gauche"
+        android:layout_centerHorizontal="true"
+        android:layout_x="189dp"
+        android:layout_y="240dp"
+        android:onClick="clicCentre"
+        android:text="Centre" />
+
+    <Button
+        android:id="@+id/droite"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="115dp"
+        android:layout_height="72dp"
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_toEndOf="@+id/centre"
+        android:layout_toRightOf="@+id/centre"
+        android:layout_x="322dp"
+        android:layout_y="240dp"
+        android:onClick="clicDroit"
+        android:text="Droite" />
+
+    <Button
+        android:id="@+id/gauche"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="115dp"
+        android:layout_height="72dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/haut"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="61dp"
+        android:layout_x="55dp"
+        android:layout_y="240dp"
+        android:onClick="clicGauche"
+        android:text="Gauche" />
+
+    <Button
+        android:id="@+id/haut"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="115dp"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="98dp"
+        android:layout_toEndOf="@+id/gauche"
+        android:layout_toRightOf="@+id/gauche"
+        android:layout_x="190dp"
+        android:layout_y="156dp"
+        android:onClick="clicHaut"
+        android:text="Haut" />
+
+    <Button
+        android:id="@+id/bas"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="115dp"
+        android:layout_height="72dp"
+        android:layout_alignLeft="@+id/centre"
+        android:layout_alignStart="@+id/centre"
+        android:layout_below="@+id/centre"
+        android:layout_marginTop="52dp"
+        android:layout_x="193dp"
+        android:layout_y="325dp"
+        android:onClick="clicBas"
+        android:text="Bas" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="395dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp"
+        android:layout_x="50dp"
+        android:layout_y="588dp" />
+</AbsoluteLayout>

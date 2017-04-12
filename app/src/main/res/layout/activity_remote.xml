@@ -84,15 +84,15 @@
         android:layout_y="201dp" />
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="258dp"
         android:layout_height="17dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="28dp"
-        android:id="@+id/seekBar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_x="41dp"
-        android:layout_y="458dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp"
+        android:layout_x="49dp"
+        android:layout_y="410dp" />
 </AbsoluteLayout>
