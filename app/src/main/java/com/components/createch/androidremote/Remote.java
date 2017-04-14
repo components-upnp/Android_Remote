@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SeekBar;
 
+import org.fourthline.cling.android.AndroidUpnpService;
 import org.fourthline.cling.android.AndroidUpnpServiceImpl;
+import org.fourthline.cling.model.meta.LocalService;
+import org.fourthline.cling.model.types.UDN;
 
 import static com.components.createch.androidremote.R.id.seekBar;
 
@@ -50,9 +53,21 @@ public class Remote extends AppCompatActivity  {
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Integer progress = slider.getProgress();
-                service.getSliderControllerService().getManager().getImplementation().setTarget(progress.toString());
+                service.getSliderControllerService().getManager().getImplementation().setTarget(progress);
             }
         });
+    }
+
+    protected LocalService<SliderController> getSliderController() {
+        return this.service.getSliderControllerService();
+    }
+
+    protected AndroidUpnpService getUpnpService() {
+        return this.service.getUpnpService();
+    }
+
+    protected UDN getSliderUdn() {
+        return this.service.getUdnSlider();
     }
 
 

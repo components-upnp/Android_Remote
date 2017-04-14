@@ -43,68 +43,60 @@ public class SliderController {
          * Variable D'Etat, non �venemenc�e
          * Permet d'envoyer le message de l'�tat de la télécommande
          */
-        @UpnpStateVariable(defaultValue = "0", sendEvents = false)
-        private String target = "0";
+        @UpnpStateVariable(defaultValue = "0", sendEvents = false, datatype = "int", allowedValueMinimum = 0,
+                allowedValueMaximum = 100,
+                allowedValueStep = 1)
+        private int target = 0;
 
         /**
          * Variable d'etat �venemmenc�e
          * Permet de v�rifier si la télécommande est bien dans le bon �tat.
          */
-        @UpnpStateVariable(defaultValue = "0")
-        private String status = "0";
+        @UpnpStateVariable(defaultValue = "0", datatype = "int", allowedValueMinimum = 0,
+        allowedValueMaximum = 100,
+        allowedValueStep = 1)
+        private int status = 0;
 
 
         /**
-         * Permet d'envoyer un message de changement d'etat de télécommande
+         * Permet d'envoyer un message de changement d'etat du Slider
          *
          * @param newTargetValue
          */
         @UpnpAction
-        public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue) {
+        public void setTarget(@UpnpInputArgument(name = "NewTargetValue") int newTargetValue) {
 
-            System.out.println("Changement");
-            // [FACULTATIF] je garde la l'ancienne valeur pour emmettre l'evenenment
-            String targetOldValue = target;
-            target = newTargetValue;
+            if ((newTargetValue >= 0) && (newTargetValue <= 100)) {
 
-
-            String statusOldValue = status;
-            status = newTargetValue;
-
-            // Envoie un �venement UPnP, c'est le nom de la variable d'etat qui lance l'�venement
-            // COMMENCE PAR UNE MAJUSCULE. Ici "Status" pour la varialbe status
-            getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
+                System.out.println("Changement");
+                // [FACULTATIF] je garde la l'ancienne valeur pour emmettre l'evenenment
+                int targetOldValue = target;
+                target = newTargetValue;
 
 
+                int statusOldValue = status;
+                status = newTargetValue;
 
-            // [FACULTATIF]
-            // Ceci n'a pas d'effet pour le monitoring UPnP, mais fonctionne avec Javabean.
-            // Ici on met le nom de la variable : status
-            getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
+                // Envoie un �venement UPnP, c'est le nom de la variable d'etat qui lance l'�venement
+                // COMMENCE PAR UNE MAJUSCULE. Ici "Status" pour la varialbe status
+                getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
 
-
+                // [FACULTATIF]
+                // Ceci n'a pas d'effet pour le monitoring UPnP, mais fonctionne avec Javabean.
+                // Ici on met le nom de la variable : status
+                getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
+            }
 
         }
 
         /**
-         * Obtenir le target de la télécommande
+         * Obtenir le status du Slider
          * Methode Upnp grace au syst�me d'annotation
          *
-         * @return boolean
-         */
-        @UpnpAction(out = @UpnpOutputArgument(name = "RetTargetValue"))
-        public String getTarget() {
-            return target;
-        }
-
-        /**
-         * Obtenir le status de la télécommande
-         * Methode Upnp grace au syst�me d'annotation
-         *
-         * @return boolean
+         * @return int
          */
         @UpnpAction(out = @UpnpOutputArgument(name = "ResultStatus"))
-        public String getStatus() {
+        public int getStatus() {
             // Pour ajouter des informations suppl�mentaires UPnP en cas d'erreur :
             // throw new ActionException(ErrorCode.ACTION_NOT_AUTHORIZED);
             return status;

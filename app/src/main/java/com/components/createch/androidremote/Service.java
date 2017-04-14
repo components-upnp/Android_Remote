@@ -4,13 +4,23 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
+import org.fourthline.cling.UpnpService;
 import org.fourthline.cling.android.AndroidUpnpService;
+import org.fourthline.cling.controlpoint.SubscriptionCallback;
+import org.fourthline.cling.model.VariableValue;
+import org.fourthline.cling.model.gena.CancelReason;
+import org.fourthline.cling.model.gena.GENASubscription;
+import org.fourthline.cling.model.message.UpnpResponse;
 import org.fourthline.cling.model.meta.LocalDevice;
 import org.fourthline.cling.model.meta.LocalService;
+import org.fourthline.cling.model.meta.StateVariable;
 import org.fourthline.cling.model.types.UDAServiceType;
 import org.fourthline.cling.model.types.UDN;
 
+import java.util.Map;
 import java.util.UUID;
+
+import static junit.framework.Assert.assertNull;
 
 /**
  * Created by IDA on 28/02/2017.
@@ -27,12 +37,15 @@ public class Service {
 
 
 
+
+
         public Service() {
             serviceConnection = new ServiceConnection() {
 
 
                 public void onServiceConnected(ComponentName className, IBinder service) {
                     upnpService = (AndroidUpnpService) service;
+
 
                     LocalService<RemoteController> remoteControllerService = getRemoteControllerService();
 
@@ -61,11 +74,13 @@ public class Service {
 
                             upnpService.getRegistry().addDevice(remoteDevice);
 
+
                         } catch (Exception ex) {
                             System.err.println("Creating Android remote controller device failed !!!");
                             return;
                         }
                     }
+                    System.out.println("Creation device reussie...");
 
                 }
 
@@ -73,6 +88,8 @@ public class Service {
                     upnpService = null;
                 }
             };
+
+
 
 
         }
@@ -106,5 +123,13 @@ public class Service {
 
         return (LocalService<SliderController>)
                 remoteDevice.findService(new UDAServiceType("SliderController", 1));
+    }
+
+    protected AndroidUpnpService getUpnpService() {
+        return this.upnpService;
+    }
+
+    public UDN getUdnSlider() {
+        return udnSlider;
     }
 }

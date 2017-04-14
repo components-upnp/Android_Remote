@@ -83,22 +83,14 @@ public class RemoteController {
 
         }
 
-        /**
-         * Obtenie le target de la télécommande
-         * Methode Upnp grace au syst�me d'annotation
-         *
-         * @return boolean
-         */
-        @UpnpAction(out = @UpnpOutputArgument(name = "RetTargetValue"))
-        public String getTarget() {
-            return target;
-        }
+
+
 
         /**
          * Obtenir le status de la télécommande
          * Methode Upnp grace au système d'annotation
          *
-         * @return boolean
+         * @return string
          */
         @UpnpAction(out = @UpnpOutputArgument(name = "ResultStatus"))
         public String getStatus() {
