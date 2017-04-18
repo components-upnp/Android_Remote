@@ -2,6 +2,7 @@
 Télécommande Android avec une interface réseau UPnP
 
 <strong><u>Description:</u></strong>
+
 Application Android dont l'interface est composée d'une croix directionnelle, d'un bouton central et d'un curseur.
 Cette application utilise le protocole UPnP afin d'envoyer un évènements sur le réseau, à d'autres composants.
 Par exemple, on pourrait faire interagir la télécommande Android avec un lecteur audio et utiliser les booutons pour changer
