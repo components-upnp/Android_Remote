@@ -44,7 +44,7 @@ Ce composant envoie un événement UPnP StatusEvent avec une chaîne de caractè
 
 SliderController:
 
-  1) GeetStatus(): retourne la valeur courante du slider.
+  1) GetStatus(): retourne la valeur courante du slider.
   
 Ce composant envoie un événement UPnP StatusEvent, avec un entier, allant de 0 à 100 correspondant à la valeur du slider.
 
