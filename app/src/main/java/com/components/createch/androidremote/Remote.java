@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.SeekBar;
 
 import org.fourthline.cling.android.AndroidUpnpServiceImpl;
@@ -18,6 +20,7 @@ public class Remote extends AppCompatActivity  {
 
     private ServiceConnection serviceConnection;
     private Service service;
+    Vibrator vib;
 
 
     @Override
@@ -53,8 +56,14 @@ public class Remote extends AppCompatActivity  {
                 service.getSliderControllerService().getManager().getImplementation().setTarget(progress.toString());
             }
         });
+
+        vib = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+
+    public void vibration(){
+        vib.vibrate(19);
+    }
 
 
     //Dans les fonctions qui suivent, on envoie un premier message pour avertir du changement d'état
@@ -64,31 +73,31 @@ public class Remote extends AppCompatActivity  {
     public void clicGauche(View view) {
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.GAUCHE.toString());
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
-
+        vibration();
     }
 
     public void clicDroit(View view) {
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.DROITE.toString());
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
-
+        vibration();
     }
 
     public void clicHaut(View view) {
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.HAUT.toString());
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
-
+        vibration();
     }
 
     public void clicBas(View view) {
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.BAS.toString());
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
-
+        vibration();
     }
 
     public void clicCentre(View view) {
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.CENTRE.toString());
         service.getRemoteControllerService().getManager().getImplementation().setTarget(State.AUCUN.toString());
-
+        vibration();
     }
 
 }
