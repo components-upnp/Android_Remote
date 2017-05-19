@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_remote"
     android:layout_width="match_parent"
@@ -10,78 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.components.createch.androidremote.Remote">
 
-    <Button
-        android:text="Bas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/centre"
-        android:layout_alignLeft="@+id/centre"
-        android:layout_alignStart="@+id/centre"
-        android:layout_marginTop="52dp"
-        style="@android:style/Widget.Button.Small"
-        android:id="@+id/bas"
-        android:onClick="clicBas"
-        android:layout_x="125dp"
-        android:layout_y="250dp" />
-
-
-    <Button
-        android:text="Haut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
-        android:id="@+id/haut"
-        android:onClick="clicHaut"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/gauche"
-        android:layout_toEndOf="@+id/gauche"
-        style="@android:style/Widget.Button.Small"
-        android:layout_x="125dp"
-        android:layout_y="153dp" />
-
-
-    <Button
-        android:text="Gauche"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="61dp"
-        android:id="@+id/gauche"
-        android:layout_below="@+id/haut"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        style="@android:style/Widget.Button.Small"
-        android:onClick="clicGauche"
-        android:layout_x="36dp"
-        android:layout_y="201dp" />
-
-    <Button
-        android:text="Droite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/droite"
-        style="@android:style/Widget.Button.Small"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_alignTop="@+id/centre"
-        android:layout_toRightOf="@+id/centre"
-        android:layout_toEndOf="@+id/centre"
-        android:onClick="clicDroit"
-        android:layout_x="213dp"
-        android:layout_y="201dp" />
-
-    <Button
-        android:text="Centre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/centre"
-        style="@android:style/Widget.Button.Small"
-        android:layout_alignTop="@+id/gauche"
-        android:layout_centerHorizontal="true"
-        android:onClick="clicCentre"
-        android:layout_x="125dp"
-        android:layout_y="201dp" />
 
     <SeekBar
         android:layout_width="258dp"
@@ -95,4 +24,64 @@
         android:layout_alignParentEnd="true"
         android:layout_x="41dp"
         android:layout_y="458dp" />
-</AbsoluteLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageButton4"
+        android:layout_alignStart="@+id/imageButton4"
+        android:layout_below="@+id/imageButton9"
+        android:layout_marginTop="64dp"
+        android:background="@null"
+        android:onClick="clicBas"
+        app:srcCompat="@drawable/bas" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:background="@null"
+        android:onClick="clicHaut"
+        app:srcCompat="@drawable/haut" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:background="@null"
+        android:onClick="clicGauche"
+        app:srcCompat="@drawable/gauche"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:onClick="clicDroit"
+        app:srcCompat="@drawable/droite"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_alignTop="@+id/imageButton6"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clicCentre"
+        app:srcCompat="@android:drawable/toast_frame"
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
