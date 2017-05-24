@@ -1,4 +1,4 @@
-package com.components.createch.androidremote;
+package com.components.createch.androidremote.upnp;
 
 /**
  * Created by IDA on 22/02/2017.

@@ -1,4 +1,4 @@
-package com.components.createch.androidremote;
+package com.components.createch.androidremote.upnp;
 
 import org.fourthline.cling.binding.annotations.UpnpAction;
 import org.fourthline.cling.binding.annotations.UpnpInputArgument;
@@ -11,26 +11,24 @@ import org.fourthline.cling.binding.annotations.UpnpStateVariable;
 import java.beans.PropertyChangeSupport;
 
 /**
- * Created by IDA on 28/02/2017.
+ * Created by IDA on 22/02/2017.
  */
 
 /*Classe contenant le service UPnP offert par l'application
 * On y retrouve les différentes méthodes accessibles via le réseaux*/
 
 
-//Définition du service UPnP, ID + Type
-
+    //Définition du service UPnP, ID + Type
 @UpnpService(
-        serviceId = @UpnpServiceId("SliderController"),
-        serviceType = @UpnpServiceType(value = "SliderController", version = 1)
+        serviceId = @UpnpServiceId("RemoteController"),
+        serviceType = @UpnpServiceType(value = "RemoteController", version = 1)
 )
-
-public class SliderController {
+public class RemoteController {
 
 
         private final PropertyChangeSupport propertyChangeSupport;
 
-        public SliderController() {
+        public RemoteController() {
             this.propertyChangeSupport = new PropertyChangeSupport(this);
         }
 
@@ -43,16 +41,15 @@ public class SliderController {
          * Variable D'Etat, non �venemenc�e
          * Permet d'envoyer le message de l'�tat de la télécommande
          */
-        @UpnpStateVariable(defaultValue = "0", sendEvents = false)
-        private String target = "0";
+        @UpnpStateVariable(defaultValue = "AUCUN", sendEvents = false)
+        private String target = State.AUCUN.toString();
 
         /**
          * Variable d'etat �venemmenc�e
          * Permet de v�rifier si la télécommande est bien dans le bon �tat.
          */
-        @UpnpStateVariable(defaultValue = "0")
-        private String status = "0";
-
+        @UpnpStateVariable(defaultValue = "AUCUN")
+        private String status = State.AUCUN.toString();
 
         /**
          * Permet d'envoyer un message de changement d'etat de télécommande
@@ -87,7 +84,7 @@ public class SliderController {
         }
 
         /**
-         * Obtenir le target de la télécommande
+         * Obtenie le target de la télécommande
          * Methode Upnp grace au syst�me d'annotation
          *
          * @return boolean
@@ -99,7 +96,7 @@ public class SliderController {
 
         /**
          * Obtenir le status de la télécommande
-         * Methode Upnp grace au syst�me d'annotation
+         * Methode Upnp grace au système d'annotation
          *
          * @return boolean
          */
@@ -117,7 +114,5 @@ public class SliderController {
         public void printVersion() {
             System.out.println("Version : 1.0");
         }
-
-
-
 }
+

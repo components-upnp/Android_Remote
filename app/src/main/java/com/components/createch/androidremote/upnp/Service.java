@@ -1,4 +1,4 @@
-package com.components.createch.androidremote;
+package com.components.createch.androidremote.upnp;
 
 import android.content.ComponentName;
 import android.content.ServiceConnection;
@@ -39,7 +39,7 @@ public class Service {
                     // Register the device when this activity binds to the service for the first time
                     if (remoteControllerService == null) {
                         try {
-                            udnButton = new UDN(UUID.randomUUID());
+                            udnButton = new SaveUDN().getUdn();
                             LocalDevice remoteDevice = RemoteButtonsDevice.createDevice(udnButton);
 
                             upnpService.getRegistry().addDevice(remoteDevice);
@@ -82,9 +82,12 @@ public class Service {
     }
 
 
+    public UDN getUdnButton() {
+        return udnButton;
+    }
 
 
-    protected LocalService<RemoteController> getRemoteControllerService() {
+    public LocalService<RemoteController> getRemoteControllerService() {
         if (upnpService == null)
             return null;
 
@@ -96,7 +99,7 @@ public class Service {
                 remoteDevice.findService(new UDAServiceType("RemoteController", 1));
     }
 
-    protected LocalService<SliderController> getSliderControllerService() {
+    public LocalService<SliderController> getSliderControllerService() {
         if (upnpService == null)
             return null;
 
