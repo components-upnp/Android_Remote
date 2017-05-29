@@ -48,9 +48,9 @@ public class Remote extends AppCompatActivity  {
         File dir;
         System.err.println(Build.BRAND);
         if (Build.BRAND.toString().equals("htc_europe"))
-            dir = new File("/mnt/emmc/VoteRemote/");
+            dir = new File("/mnt/emmc/AndroidRemote/");
         else
-            dir = new File(Environment.getExternalStorageDirectory().getPath() + "/VoteRemote/");
+            dir = new File(Environment.getExternalStorageDirectory().getPath() + "/AndroidRemote/");
 
         while (!dir.exists()) {
             dir.mkdir();
