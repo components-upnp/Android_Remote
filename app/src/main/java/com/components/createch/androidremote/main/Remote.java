@@ -47,10 +47,24 @@ public class Remote extends AppCompatActivity  {
 
         File dir;
         System.err.println(Build.BRAND);
+        //Création dossier composant AndroidRemote
         if (Build.BRAND.toString().equals("htc_europe"))
             dir = new File("/mnt/emmc/AndroidRemote/");
         else
             dir = new File(Environment.getExternalStorageDirectory().getPath() + "/AndroidRemote/");
+
+        while (!dir.exists()) {
+            dir.mkdir();
+            dir.setReadable(true);
+            dir.setExecutable(true);
+            dir.setWritable(true);
+        }
+
+        //Création dossier composant AndroidSlider
+        if (Build.BRAND.toString().equals("htc_europe"))
+            dir = new File("/mnt/emmc/AndroidSlider/");
+        else
+            dir = new File(Environment.getExternalStorageDirectory().getPath() + "/AndroidSlider/");
 
         while (!dir.exists()) {
             dir.mkdir();

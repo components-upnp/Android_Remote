@@ -10,6 +10,7 @@ import org.fourthline.cling.model.meta.LocalService;
 import org.fourthline.cling.model.types.UDAServiceType;
 import org.fourthline.cling.model.types.UDN;
 
+import java.io.IOException;
 import java.util.UUID;
 
 /**
@@ -39,7 +40,7 @@ public class Service {
                     // Register the device when this activity binds to the service for the first time
                     if (remoteControllerService == null) {
                         try {
-                            udnButton = new SaveUDN().getUdn();
+                            udnButton = new SaveUDN().getUdn("AndroidRemote");
                             LocalDevice remoteDevice = RemoteButtonsDevice.createDevice(udnButton);
 
                             upnpService.getRegistry().addDevice(remoteDevice);
@@ -50,7 +51,11 @@ public class Service {
                         }
                     }
 
-                    udnSlider = new UDN(UUID.randomUUID());
+                    try {
+                        udnSlider = new SaveUDN().getUdn("AndroidSlider");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     LocalService<SliderController> sliderControllerService = getSliderControllerService();
 
                     if (sliderControllerService == null) {

@@ -23,15 +23,15 @@ import xdroid.toaster.Toaster;
 
 public class SaveUDN {
 
-    public UDN getUdn() throws IOException {
+    public UDN getUdn(String name) throws IOException {
 
         UDN ret;
         File fi;
 
         if (Build.BRAND.toString().equals("htc_europe"))
-            fi = new File("/mnt/emmc/AndroidRemote/udn.txt");
+            fi = new File("/mnt/emmc/"+ name+"/udn.txt");
         else
-            fi = new File(Environment.getExternalStorageDirectory().getPath() + "/AndroidRemote/udn.txt");
+            fi = new File(Environment.getExternalStorageDirectory().getPath() + "/"+name+"/udn.txt");
 
         if (!fi.exists()) {
             fi.createNewFile();
