@@ -91,6 +91,9 @@ public class Service {
         return udnButton;
     }
 
+    public UDN getUdnSlider() {
+        return udnSlider;
+    }
 
     public LocalService<RemoteController> getRemoteControllerService() {
         if (upnpService == null)

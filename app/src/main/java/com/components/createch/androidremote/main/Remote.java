@@ -100,7 +100,15 @@ public class Remote extends AppCompatActivity  {
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Integer progress = slider.getProgress();
-                service.getSliderControllerService().getManager().getImplementation().setTarget(progress.toString());
+                try {
+                    String com = getXmlSlider(progress.toString());
+                    service.getSliderControllerService().getManager().getImplementation().setTarget(com);
+                } catch (TransformerException e) {
+                    e.printStackTrace();
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
@@ -118,37 +126,41 @@ public class Remote extends AppCompatActivity  {
     //Cela permet de faire deux fois la même actions (deux fois DROITE par exemple)
 
     public void clicGauche(View view) throws TransformerException, ParserConfigurationException {
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.GAUCHE.toString()));
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.AUCUN.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.GAUCHE.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.AUCUN.toString()));
         vibration();
     }
 
     public void clicDroit(View view) throws TransformerException, ParserConfigurationException {
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.DROITE.toString()));
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.AUCUN.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.DROITE.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.AUCUN.toString()));
         vibration();
     }
 
     public void clicHaut(View view) throws TransformerException, ParserConfigurationException {
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.HAUT.toString()));
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.AUCUN.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.HAUT.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.AUCUN.toString()));
         vibration();
     }
 
     public void clicBas(View view) throws TransformerException, ParserConfigurationException {
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.BAS.toString()));
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.AUCUN.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.BAS.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.AUCUN.toString()));
         vibration();
     }
 
     public void clicCentre(View view) throws TransformerException, ParserConfigurationException {
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.CENTRE.toString()));
-        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXml(State.AUCUN.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.CENTRE.toString()));
+        service.getRemoteControllerService().getManager().getImplementation().setTarget(getXmlButton(State.AUCUN.toString()));
         vibration();
     }
 
-    public String getXml(String commande) throws TransformerException, ParserConfigurationException {
+    public String getXmlButton(String commande) throws TransformerException, ParserConfigurationException {
         return gen.getDocXml(service.getUdnButton().toString(), commande);
+    }
+
+    public String getXmlSlider(String commande) throws TransformerException, ParserConfigurationException {
+        return gen.getDocXml(service.getUdnSlider().toString(), commande);
     }
 
 }
