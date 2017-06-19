@@ -34,7 +34,7 @@ RemoteController:
 
   1) GetStatus(): retourne le statut courant
 
-Ce composant envoie un événement UPnP StatusEvent avec une chaîne de caractère correspondat au bouton qui a été cliqué, à savoir:
+Ce composant envoie un événement UPnP StatusEvent dans lequel on passe un fichier XML avec une chaîne de caractère correspondat au bouton qui a été cliqué, à savoir:
   -DROITE
   -GAUCHE
   -BAS
