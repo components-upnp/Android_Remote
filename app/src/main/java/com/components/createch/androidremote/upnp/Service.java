@@ -13,6 +13,8 @@ import org.fourthline.cling.model.types.UDN;
 import java.io.IOException;
 import java.util.UUID;
 
+import xdroid.toaster.Toaster;
+
 /**
  * Created by IDA on 28/02/2017.
  */
@@ -20,7 +22,7 @@ import java.util.UUID;
 public class Service {
 
     private AndroidUpnpService upnpService;
-    private UDN udnButton;  // TODO: Not stable! Sauvegarder l'UUID dans un fichier après la première génération
+    private UDN udnButton;
     private UDN udnSlider;
     private ServiceConnection serviceConnection;
 
@@ -47,6 +49,7 @@ public class Service {
 
                         } catch (Exception ex) {
                             System.err.println("Creating Android remote controller device failed !!!");
+                            Toaster.toast("ERREUR CREATION");
                             return;
                         }
                     }
@@ -68,6 +71,7 @@ public class Service {
 
                         } catch (Exception ex) {
                             System.err.println("Creating Android remote controller device failed !!!");
+                            Toaster.toast("ERREUR CREATION");
                             return;
                         }
                     }

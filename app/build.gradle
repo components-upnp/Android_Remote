@@ -40,7 +40,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'org.fourthline.cling:cling-core:2.0.1'
+    compile 'org.fourthline.cling:cling-core:2.1.1'
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: jettyVersion
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: jettyVersion
     compile group: 'org.eclipse.jetty', name: 'jetty-client', version: jettyVersion
